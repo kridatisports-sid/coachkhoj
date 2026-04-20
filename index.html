@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoachKhoj — Investor Deck 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --yellow:#F5C518;--yellowl:#FFF8D6;--yellowb:#FFE566;
+  --red:#C0392B;--redl:#FDECEA;
+  --ink:#1a1a18;--mid:#5a5a54;--soft:#9a9990;
+  --bg:#fafaf8;--white:#ffffff;--s1:#f4f3ef;
+  --bd:#e2dfd8;--bd2:#ccc9c0;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.7}
+
+.nav{background:var(--ink);padding:0 40px;display:flex;align-items:stretch;justify-content:space-between;flex-wrap:wrap;gap:0}
+.nav-logo-wrap{display:flex;align-items:center;gap:10px;padding:10px 0}
+.nav-logo-img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.nav-logo{font-family:'Anton',sans-serif;font-size:20px;color:var(--yellow);letter-spacing:1px}
+.nav-logo span{color:#fff}
+.nav-tabs{display:flex;gap:0}
+.nt{font-size:12px;padding:0 14px;color:rgba(255,255,255,.5);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;display:flex;align-items:center}
+.nt:hover{color:#fff}
+.nt.on{color:var(--yellow);border-bottom-color:var(--yellow);font-weight:500}
+
+.slide{display:none}
+.slide.on{display:block}
+
+.cover{background:var(--ink);padding:72px 48px 64px;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;top:-80px;right:-60px;width:340px;height:340px;border-radius:50%;background:rgba(245,197,24,0.07);pointer-events:none}
+.cover-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--yellow);font-weight:500;margin-bottom:20px}
+.cover h1{font-family:'Anton',sans-serif;font-size:clamp(34px,5vw,62px);line-height:1.04;color:#fff;margin-bottom:20px;letter-spacing:.5px}
+.cover h1 span{color:var(--yellow)}
+.cover-sub{font-size:15px;color:rgba(255,255,255,.65);max-width:560px;line-height:1.75;margin-bottom:36px}
+.cover-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px}
+.chip{font-size:11px;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);background:rgba(255,255,255,.07)}
+.chip.y{background:rgba(245,197,24,.15);color:var(--yellow);border-color:rgba(245,197,24,.3)}
+.cover-logo-center{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.cover-logo-center img{width:56px;height:56px;border-radius:50%}
+.cover-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden}
+.cs{background:rgba(255,255,255,.04);padding:20px 22px}
+.cs .n{font-family:'Anton',sans-serif;font-size:26px;color:var(--yellow);margin-bottom:4px;letter-spacing:.5px}
+.cs .l{font-size:12px;color:rgba(255,255,255,.45);line-height:1.45}
+
+.sec{padding:52px 48px;border-bottom:1px solid var(--bd)}
+.sec:nth-child(even){background:var(--white)}
+.sec-ey{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--red);font-weight:500;margin-bottom:12px}
+.sec h2{font-family:'Anton',sans-serif;font-size:clamp(20px,2.8vw,32px);line-height:1.15;margin-bottom:6px;letter-spacing:.3px}
+.sec h2 span{color:var(--yellow)}
+.sec-lead{font-size:14px;color:var(--mid);margin-bottom:28px;max-width:640px;line-height:1.7}
+
+.g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+
+.card{background:var(--white);border:1px solid var(--bd);border-radius:10px;padding:20px}
+.card-ey{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:500;margin-bottom:8px}
+.card-ey.y{color:var(--red)}.card-ey.b{color:#1a5fb4}.card-ey.a{color:#a05c00}.card-ey.g{color:#2d6a2d}
+.card h3{font-family:'Anton',sans-serif;font-size:15px;margin-bottom:8px;letter-spacing:.3px}
+.card p{font-size:13px;color:var(--mid);line-height:1.7}
+.card ul{padding-left:1rem}
+.card li{font-size:13px;color:var(--mid);margin-bottom:5px;line-height:1.6}
+
+.tl{padding-left:24px;position:relative}
+.tl::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--bd)}
+.tl-row{position:relative;margin-bottom:28px}
+.tl-row:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;border:2px solid}
+.tl-dot.done{background:var(--yellow);border-color:var(--yellow)}
+.tl-dot.now{background:var(--red);border-color:var(--red)}
+.tl-dot.fut{background:var(--bg);border-color:var(--bd2)}
+.tl-label{font-size:11px;font-weight:500;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em}
+.tl-label.done{color:#a05c00}.tl-label.now{color:var(--red)}.tl-label.fut{color:var(--soft)}
+.tl-row h3{font-family:'Anton',sans-serif;font-size:14px;margin-bottom:5px;letter-spacing:.2px}
+.tl-row p{font-size:13px;color:var(--mid);line-height:1.65}
+.tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tg{font-size:10px;padding:2px 8px;border-radius:4px;border:1px solid var(--yellowb);color:#a05c00;background:var(--yellowl)}
+
+.rs-card{background:var(--white);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.rs-top{padding:18px 20px 14px;border-bottom:1px solid var(--bd)}
+.rs-num{font-size:10px;color:var(--soft);margin-bottom:4px;font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.rs-title{font-family:'Anton',sans-serif;font-size:15px;margin-bottom:3px;letter-spacing:.3px}
+.rs-sub{font-size:12px;color:var(--soft)}
+.rs-mid{padding:14px 20px;border-bottom:1px solid var(--bd);background:var(--yellowl)}
+.rs-market{font-family:'Anton',sans-serif;font-size:24px;color:var(--red);margin-bottom:2px;letter-spacing:.5px}
+.rs-msub{font-size:11px;color:#a05c00}
+.rs-body{padding:14px 20px}
+.rs-body li{font-size:12px;color:var(--mid);margin-bottom:4px;line-height:1.55}
+.rs-foot{padding:12px 20px;background:var(--ink);border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
+.rs-arr{font-size:12px;font-weight:500;color:var(--yellow)}
+.rs-when{font-size:11px;color:rgba(255,255,255,.4)}
+
+.fin-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--bd)}
+.fin-row:last-child{border-bottom:none}
+.fin-lbl{font-size:13px;color:var(--mid)}
+.fin-val{font-size:14px;font-weight:500}
+.fin-val.y{color:#a05c00}.fin-val.g{color:#2d6a2d}
+
+.ask-hero{background:var(--ink);border-radius:10px;padding:32px 36px;margin-bottom:20px;position:relative;overflow:hidden}
+.ask-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:rgba(245,197,24,.08);pointer-events:none}
+.ask-hero h3{font-family:'Anton',sans-serif;font-size:32px;color:var(--yellow);margin-bottom:4px;letter-spacing:.5px}
+.ask-hero p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:24px}
+.use-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.use-lbl{font-size:12px;color:rgba(255,255,255,.7);min-width:200px}
+.use-track{flex:1;height:3px;background:rgba(255,255,255,.15);border-radius:2px}
+.use-fill{height:3px;border-radius:2px;background:var(--yellow)}
+.use-pct{font-size:11px;color:rgba(255,255,255,.5);min-width:28px;text-align:right}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.why-card{border:1px solid var(--bd);border-radius:8px;padding:16px}
+.why-n{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--red);font-weight:500;margin-bottom:6px}
+.why-t{font-family:'Anton',sans-serif;font-size:14px;margin-bottom:5px;letter-spacing:.2px}
+.why-p{font-size:12px;color:var(--mid);line-height:1.55}
+
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.ph{background:var(--white);border:1px solid var(--bd);border-radius:10px;padding:18px}
+.ph-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:500;margin-bottom:8px;color:var(--red)}
+.ph h3{font-family:'Anton',sans-serif;font-size:14px;margin-bottom:10px;letter-spacing:.2px}
+.ph li{font-size:12px;color:var(--mid);margin-bottom:4px;line-height:1.55}
+
+.metric-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:24px 0}
+.met{background:var(--white);border:1px solid var(--bd);border-radius:8px;padding:16px 14px}
+.met .mn{font-family:'Anton',sans-serif;font-size:24px;margin-bottom:4px;letter-spacing:.3px;color:var(--red)}
+.met .ml{font-size:11px;color:var(--soft);line-height:1.4}
+
+.highlight{border-left:3px solid var(--yellow);padding:14px 18px;background:var(--yellowl);margin:20px 0;border-radius:0 8px 8px 0}
+.highlight p{font-size:13px;color:#7a5800;line-height:1.75}
+.highlight p strong{color:var(--red)}
+
+.year-col h4{font-family:'Anton',sans-serif;font-size:22px;margin-bottom:16px;letter-spacing:.3px}
+.year-col h4 span{font-size:13px;font-weight:400;color:var(--soft);font-family:'Inter',sans-serif;margin-left:4px;letter-spacing:0}
+
+.contact-strip{background:var(--ink);border-radius:10px;padding:24px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:20px}
+.c-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:3px}
+.c-val{font-size:14px;font-weight:500;color:#fff}
+
+.mkt-pill{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500;margin-left:8px;vertical-align:middle;background:var(--yellowl);color:#7a5800}
+
+.divider{border:none;border-top:1px solid var(--bd);margin:24px 0}
+
+.milestone-table{background:var(--white);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.mt-head{display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.1)}
+.mt-head div{padding:10px 16px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);font-weight:500}
+.mt-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--bd)}
+.mt-row:last-child{border-bottom:none}
+.mt-row div{padding:11px 16px;font-size:13px}
+
+.section-logo{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.section-logo img{width:32px;height:32px;border-radius:50%}
+.section-logo span{font-family:'Anton',sans-serif;font-size:16px;color:var(--ink);letter-spacing:.5px}
+
+footer{padding:22px 48px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;background:var(--ink)}
+.footer-logo{display:flex;align-items:center;gap:8px}
+.footer-logo img{width:28px;height:28px;border-radius:50%}
+.footer-logo span{font-family:'Anton',sans-serif;font-size:14px;color:var(--yellow);letter-spacing:.5px}
+footer .ft-right{font-size:11px;color:rgba(255,255,255,.35)}
+
+@media(max-width:700px){
+  .g2,.g3,.phase-grid{grid-template-columns:1fr}
+  .cover,.sec,footer,.nav{padding-left:20px;padding-right:20px}
+  .nav-tabs{flex-wrap:wrap}
+  .ask-hero{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo-wrap">
+    <img class="nav-logo-img" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj" id="navLogo">
+    <div class="nav-logo">COACH<span>KHOJ</span></div>
+  </div>
+  <div class="nav-tabs">
+    <div class="nt on" onclick="go(0)">Overview</div>
+    <div class="nt" onclick="go(1)">Our journey</div>
+    <div class="nt" onclick="go(2)">Opportunity</div>
+    <div class="nt" onclick="go(3)">Revenue</div>
+    <div class="nt" onclick="go(4)">Roadmap</div>
+    <div class="nt" onclick="go(5)">Financials</div>
+    <div class="nt" onclick="go(6)">The ask</div>
+  </div>
+</nav>
+
+<!-- SLIDE 0 · COVER -->
+<div class="slide on" id="s0">
+  <div class="cover">
+    <div class="cover-eyebrow">Investor Presentation · April 2026 · Seed Angel Round</div>
+    <div class="cover-logo-center">
+      <img id="coverLogo" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj Logo" style="width:64px;height:64px;border-radius:50%;border:3px solid rgba(245,197,24,.4)">
+      <div>
+        <div style="font-family:'Anton',sans-serif;font-size:28px;color:var(--yellow);letter-spacing:1px">COACHKHOJ</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.45)">www.coachkhoj.com</div>
+      </div>
+    </div>
+    <h1>INDIA'S SPORTS<br>COACHING <span>INFRASTRUCTURE</span><br>PLATFORM</h1>
+    <p class="cover-sub">CoachKhoj connects athletes, parents, and academies with verified coaches — and gives every sports academy in India the tools to operate, grow, and scale. We are building the operating system for India's sports coaching economy.</p>
+    <div class="cover-chips">
+      <span class="chip y">500+ coaches onboarded</span>
+      <span class="chip y">50+ active academies</span>
+      <span class="chip y">8 sports disciplines</span>
+      <span class="chip y">4 cities</span>
+      <span class="chip y">Founded 2016 · 8 years on ground</span>
+    </div>
+    <div class="cover-stats">
+      <div class="cs"><div class="n">$462M</div><div class="l">India sports coaching market by 2034</div></div>
+      <div class="cs"><div class="n">19.1%</div><div class="l">Sports mgmt. software CAGR globally</div></div>
+      <div class="cs"><div class="n">₹4,480Cr</div><div class="l">India sports budget 2026-27 — all-time high</div></div>
+      <div class="cs"><div class="n">500,000+</div><div class="l">Uncertified coaches in India — our core market</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-ey">The one-line pitch</div>
+    <h2>THE <span>LINKEDIN + ZOHO + PRACTO</span><br>FOR INDIA'S 500,000 SPORTS COACHES</h2>
+    <p class="sec-lead">Every coach needs a professional presence. Every academy needs management tools. Every athlete needs a verified coach. CoachKhoj is the single platform that connects all three — and monetises every interaction.</p>
+    <div class="g3">
+      <div class="card">
+        <div class="card-ey y">For athletes & parents</div>
+        <h3>FIND AND BOOK VERIFIED COACHES</h3>
+        <p>Search by sport, city, and budget. Read verified reviews. Book and pay for sessions directly. Trust is built in — every coach on CoachKhoj is verified and credential-checked.</p>
+      </div>
+      <div class="card">
+        <div class="card-ey b">For coaches</div>
+        <h3>BUILD A CAREER, NOT JUST A LISTING</h3>
+        <p>Verified digital profile. Certification pathway. Booking management. AI-powered player analysis tools. CoachKhoj is a career platform, not just a directory.</p>
+      </div>
+      <div class="card">
+        <div class="card-ey a">For academies</div>
+        <h3>RUN YOUR ENTIRE OPERATION ON ONE PLATFORM</h3>
+        <p>Batch scheduling, fee collection, parent communication, coach payroll, athlete tracking — all in one SaaS dashboard. Built for how Indian sports academies actually work.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 1 · JOURNEY -->
+<div class="slide" id="s1">
+  <div class="sec" style="background:var(--white)">
+    <div class="section-logo">
+      <img id="secLogo1" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj">
+      <span>COACHKHOJ</span>
+    </div>
+    <div class="sec-ey">Our journey</div>
+    <h2>8 YEARS BUILDING THE NETWORK.<br><span>NOW BUILDING THE PRODUCT ON TOP.</span></h2>
+    <p class="sec-lead">We did not start by raising money and building software. We started on the ground — running events, managing academies, coaching athletes. That 8-year network is the moat no competitor can buy.</p>
+    <div class="tl">
+      <div class="tl-row">
+        <div class="tl-dot done"></div>
+        <div class="tl-label done">2016 – 2018 · Foundation</div>
+        <h3>PLATFORM LAUNCHED, FIRST COACHES ONBOARDED</h3>
+        <p>CoachKhoj launched under Kridati Sports Management Pvt. Ltd. Free listing platform across Mumbai and Pune. Kridati Sports Foundation (Section 8) registered. Grassroots football clinics in Kalyan, Ambarnath, Ulhasnagar. First revenue from academy management services and events.</p>
+        <div class="tl-tags"><span class="tg">Free listings</span><span class="tg">Academy management</span><span class="tg">Events</span></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dot done"></div>
+        <div class="tl-label done">2019 – 2021 · Expansion</div>
+        <h3>8 SPORTS, INSTITUTIONAL PARTNERSHIPS, NEUROSPORTS LAUNCHED</h3>
+        <p>Expanded to football, cricket, badminton, athletics, swimming, tennis, basketball, and javelin. Secured DY Patil Sports Academy, FITB (international body), and Special Olympics Bharat. Launched NeuroSports — India's first grassroots sports psychology program. 30 coaches certified. Social media management for sports brands added as a revenue stream.</p>
+        <div class="tl-tags"><span class="tg">NeuroSports</span><span class="tg">DY Patil</span><span class="tg">Special Olympics</span><span class="tg">Social media mgmt</span></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dot done"></div>
+        <div class="tl-label done">2022 – 2023 · Deepening</div>
+        <h3>EVENT IP, JAVELIN NICHE, B2B ACADEMY REVENUE</h3>
+        <p>CoachKhoj Discovery Events — Goa, Bengaluru, Kalyan. Amentum Sports launched: India's only javelin coaching program. 13 football academy tie-ups via Dream Sports Fields — generating ₹14L annual revenue for partner Unido FC. Smile Foundation (80 corporate partners) onboarded as CSR client.</p>
+        <div class="tl-tags"><span class="tg">Event IP</span><span class="tg">Javelin niche</span><span class="tg">₹14L B2B revenue</span><span class="tg">CSR channel</span></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dot done"></div>
+        <div class="tl-label done">2024 – 2025 · Scale milestone</div>
+        <h3>500 COACHES, 50 ACADEMIES, SAI PATHWAY, APL LAUNCHED</h3>
+        <p>Platform reaches 500+ coaches and 50+ academies across Mumbai, Pune, Goa, Bengaluru, Nashik. SAI empanelment initiated. Advanced Player League (APL) launched for competitive athlete development. Official partner: India Khelo Football Thane Qualifiers.</p>
+        <div class="tl-tags"><span class="tg">500+ coaches</span><span class="tg">SAI empanelment</span><span class="tg">APL</span><span class="tg">India Khelo Football</span></div>
+      </div>
+    </div>
+    <div class="highlight" style="margin-top:28px">
+      <p><strong>The key insight:</strong> Everything we built — events, academy services, social media management, coaching programs — was both revenue and research. We now know exactly what every academy, coach, and athlete needs. This raise turns that knowledge into a scalable product.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-ey">What we have today</div>
+    <h2>A NETWORK THAT TOOK <span>8 YEARS TO BUILD</span></h2>
+    <div class="metric-band">
+      <div class="met"><div class="mn">500+</div><div class="ml">Verified coaches across 8 sports</div></div>
+      <div class="met"><div class="mn">50+</div><div class="ml">Registered academies on platform</div></div>
+      <div class="met"><div class="mn">13</div><div class="ml">Football academies in B2B pipeline</div></div>
+      <div class="met"><div class="mn">30</div><div class="ml">Coaches certified via NeuroSports</div></div>
+      <div class="met"><div class="mn">6</div><div class="ml">Active institutional partnerships</div></div>
+      <div class="met"><div class="mn">4</div><div class="ml">Cities with active presence</div></div>
+    </div>
+    <div class="g3" style="margin-top:4px">
+      <div class="card"><div class="card-ey y">Institutional credibility</div><h3>DY PATIL · SPECIAL OLYMPICS BHARAT · FITB · SAI · SOCCERSTAR · SMILE FOUNDATION</h3><p>Six partnerships across government, international sports bodies, premium universities, and CSR networks. Not one funded competitor holds equivalent institutional depth.</p></div>
+      <div class="card"><div class="card-ey b">Niche IP</div><h3>INDIA'S ONLY JAVELIN COACHING PROGRAM</h3><p>Amentum Sports is India's only structured javelin training platform. Post-Neeraj Chopra, javelin is among India's most searched grassroots sports. Zero competitors in this niche.</p></div>
+      <div class="card"><div class="card-ey a">Government pathway open</div><h3>SAI EMPANELMENT ALREADY IN PROCESS</h3><p>₹4,480 crore in sports budget for 2026-27. 1,045 Khelo India Centres seeking verified coaches. Our SAI pathway puts us ahead of every tech-first competitor for B2G revenue.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2 · OPPORTUNITY -->
+<div class="slide" id="s2">
+  <div class="sec" style="background:var(--white)">
+    <div class="section-logo">
+      <img id="secLogo2" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj">
+      <span>COACHKHOJ</span>
+    </div>
+    <div class="sec-ey">The market opportunity</div>
+    <h2>A ₹2,100+ CRORE MARKET WITH<br><span>THE STRONGEST GOVT TAILWIND IN A DECADE</span></h2>
+    <p class="sec-lead">India's sports coaching economy is at an inflection point. Government ambition, a young population, and the professionalization of grassroots sport are combining into structural, decade-long demand for exactly what CoachKhoj builds.</p>
+    <div class="g2">
+      <div>
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-ey y">Market size</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--mid)">India sports coaching (2025)</span><span style="font-size:15px;font-weight:500">$254M</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--mid)">India sports coaching (2034)</span><span style="font-family:'Anton',sans-serif;font-size:16px;color:var(--red)">$462M</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--mid)">Sports mgmt. software — India by 2033</span><span style="font-size:15px;font-weight:500">₹1,272 Cr</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--mid)">India sports technology (2033)</span><span style="font-size:15px;font-weight:500">₹12,300 Cr</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-ey g">TAM · SAM · SOM</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:var(--mid)">TAM — India sports coaching ecosystem</span><span class="mkt-pill">$254M</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:var(--mid)">SAM — Coach marketplace + SaaS (15%)</span><span class="mkt-pill">$38M</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:var(--mid)">SOM — 5% capture in 3 years (8 cities)</span><span class="mkt-pill">₹16Cr</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-ey b">Why now — policy tailwinds</div>
+          <ul>
+            <li>Budget 2026-27 sports allocation: ₹4,480 crore — highest ever, 18% jump. Coach development named as a National Sports Mission pillar for the first time in history.</li>
+            <li>₹1,000 crore Khelo India FY25-26. 1,045 Khelo India Centres operational — each needing certified, discoverable coaches.</li>
+            <li>NEP 2020 integrates sport into all school curricula. 306 accredited sports academies being built nationally.</li>
+            <li>India targeting top-5 sporting nation by 2047 and bidding for 2036 Olympics — 20-year demand driver.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-ey a">Why us — the structural moat</div>
+          <p>India's coach-to-athlete ratio is 1:5,000 versus 1:500 in top sporting nations. The coach shortage is a documented, government-acknowledged bottleneck confirmed by SAI, DFAT India Economic Strategy 2035, and peer-reviewed sports journals. CoachKhoj addresses a problem the government itself has budgeted ₹4,480 crore to solve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3 · REVENUE -->
+<div class="slide" id="s3">
+  <div class="sec" style="background:var(--white)">
+    <div class="section-logo">
+      <img id="secLogo3" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj">
+      <span>COACHKHOJ</span>
+    </div>
+    <div class="sec-ey">Revenue strategy</div>
+    <h2>7 STREAMS. BUILT ON AN<br><span>8-YEAR NETWORK. ACTIVATING NOW.</span></h2>
+    <p class="sec-lead">We have generated revenue from free listings, academy management services, social media management, and events. These gave us proof and a network. Now we productise — with higher-margin, recurring, scalable technology revenue.</p>
+
+    <div class="g2" style="margin-bottom:20px">
+      <div class="rs-card">
+        <div class="rs-top"><div class="rs-num">Stream 01 · Anchor revenue</div><div class="rs-title">Academy Management SaaS</div><div class="rs-sub">Digitise the 13+ academies we already manage manually</div></div>
+        <div class="rs-mid"><div class="rs-market">₹1,272 Cr</div><div class="rs-msub">India market by 2033 · 14.54% CAGR · Fastest-growing end-user segment globally</div></div>
+        <div class="rs-body"><ul>
+          <li>Batch scheduling, attendance, fee collection, parent comms</li>
+          <li>Coach payroll, performance tracking, certification display</li>
+          <li>Multi-sport: cricket, football, badminton, athletics and more</li>
+          <li>Pricing: ₹3,000–₹15,000/month per academy (3 tiers)</li>
+        </ul></div>
+        <div class="rs-foot"><span class="rs-arr">50 academies = ₹60L ARR</span><span class="rs-when">Live Month 4</span></div>
+      </div>
+      <div class="rs-card">
+        <div class="rs-top"><div class="rs-num">Stream 02 · Technology</div><div class="rs-title">AI Player Analysis & Online Coach Consultation</div><div class="rs-sub">Video-based biomechanical analysis + online bookings</div></div>
+        <div class="rs-mid"><div class="rs-market">$60.78B</div><div class="rs-msub">Global AI in sports by 2034 · 21.14% CAGR · Fastest-growing sports tech segment</div></div>
+        <div class="rs-body"><ul>
+          <li>Athlete uploads video → AI analyses technique and form</li>
+          <li>Personalised training plan generated and coach-reviewed</li>
+          <li>Online 1-on-1 video consultation with verified coaches</li>
+          <li>Shareable player report card for college / NSF applications</li>
+          <li>Pricing: ₹299–₹999/analysis · ₹499–₹1,499/month subscription</li>
+        </ul></div>
+        <div class="rs-foot"><span class="rs-arr">5,000 subscribers = ₹1Cr ARR</span><span class="rs-when">Launch Month 5</span></div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:20px">
+      <div class="rs-card">
+        <div class="rs-top"><div class="rs-num">Stream 03 · High margin</div><div class="rs-title">Coach Education & Accredited Certification</div><div class="rs-sub">India's first private accredited coaching certification body at grassroots scale</div></div>
+        <div class="rs-mid"><div class="rs-market">$8.18B</div><div class="rs-msub">Global sports coaching market 2025 · 9.1% CAGR · Asia-Pacific fastest growing region</div></div>
+        <div class="rs-body"><ul>
+          <li>Foundation to Elite tiers — online and hybrid formats</li>
+          <li>NeuroSports sports psychology already delivering this — now formalised</li>
+          <li>Sport-specific: football, cricket, badminton, athletics, javelin</li>
+          <li>Pricing: ₹3,000 (Foundation) to ₹25,000 (Elite)</li>
+        </ul></div>
+        <div class="rs-foot"><span class="rs-arr">1,000 certs/year = ₹80L</span><span class="rs-when">Launch Month 6</span></div>
+      </div>
+      <div class="rs-card">
+        <div class="rs-top"><div class="rs-num">Stream 04 · Owned IP</div><div class="rs-title">Exclusive Sports Event IP</div><div class="rs-sub">CoachKhoj Discovery Cup · Amentum Javelin League · Advanced Player League</div></div>
+        <div class="rs-mid"><div class="rs-market">₹29,750 Cr</div><div class="rs-msub">India events market by 2034 · Sponsorship is fastest-growing revenue stream in India events</div></div>
+        <div class="rs-body"><ul>
+          <li>CoachKhoj Discovery Cup — annual multi-city talent identification</li>
+          <li>Amentum Javelin League — India's only grassroots javelin series, zero competitors</li>
+          <li>APL — competitive league across sports, franchise model potential</li>
+          <li>Each event: entry fees + ₹5–25L brand sponsorship</li>
+        </ul></div>
+        <div class="rs-foot"><span class="rs-arr">4 events/year = ₹40–80L</span><span class="rs-when">2 events already proven</span></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="rs-card">
+        <div class="rs-top"><div class="rs-num">Stream 05 · B2G moat</div><div class="rs-title">Tender Transparency Portal for Sports Authority</div><div class="rs-sub">The only platform aggregating govt. sports contracts for coaches and academies</div></div>
+        <div class="rs-mid"><div class="rs-market">₹4,480 Cr</div><div class="rs-msub">India sports budget 2026-27 · Every rupee creates a coach procurement need we solve</div></div>
+        <div class="rs-body"><ul>
+          <li>Aggregates Khelo India, SAI, state federation, school sports contracts</li>
+          <li>Coaches subscribe for filtered tender alerts: ₹500–₹2,000/month</li>
+          <li>Success fee on won government contracts (2–5%)</li>
+          <li>Government portal licensing: ₹5–25L/year per state</li>
+        </ul></div>
+        <div class="rs-foot"><span class="rs-arr">1 state license = ₹25L/year</span><span class="rs-when">Beta Month 8</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="rs-card" style="flex:1">
+          <div class="rs-top"><div class="rs-num">Stream 06</div><div class="rs-title">Booking commission</div><div class="rs-sub">10–15% on every coach session booked via CoachKhoj</div></div>
+          <div class="rs-foot"><span class="rs-arr">5,000 sessions/month = ₹50–75L/year</span><span class="rs-when">Live on app</span></div>
+        </div>
+        <div class="rs-card" style="flex:1">
+          <div class="rs-top"><div class="rs-num">Stream 07</div><div class="rs-title">CSR & institutional grants</div><div class="rs-sub">Non-dilutive · Via Kridati Foundation + Smile Foundation's 80 corporate partners</div></div>
+          <div class="rs-foot"><span class="rs-arr">5 corporates = ₹25–150L/year</span><span class="rs-when">Channel already active</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4 · ROADMAP -->
+<div class="slide" id="s4">
+  <div class="sec" style="background:var(--white)">
+    <div class="section-logo">
+      <img id="secLogo4" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj">
+      <span>COACHKHOJ</span>
+    </div>
+    <div class="sec-ey">Execution roadmap</div>
+    <h2>48 MONTHS TO BECOME<br><span>INDIA'S DEFAULT SPORTS COACHING OS</span></h2>
+    <p class="sec-lead">Four clear phases — each unlocking the next. We do not need to invent new markets. We need to productise what we already operate.</p>
+    <div class="phase-grid">
+      <div class="ph">
+        <div class="ph-label">Phase 1 · Month 0–6</div>
+        <h3>BUILD: SAAS + APP + TEAM</h3>
+        <ul>
+          <li>Academy SaaS: 10 pilot academies (pipeline exists)</li>
+          <li>Mobile app launched — Android-first for Tier 2/3</li>
+          <li>3 key hires: Tech lead, Growth, Academy BD</li>
+          <li>Khelo India vendor empanelment confirmed</li>
+          <li>Expand to Hyderabad and Chennai</li>
+          <li>AI player analysis MVP with academy student data</li>
+        </ul>
+      </div>
+      <div class="ph">
+        <div class="ph-label">Phase 2 · Month 6–12</div>
+        <h3>MONETISE: ALL STREAMS ACTIVATED</h3>
+        <ul>
+          <li>Academy SaaS: 30 paying academies</li>
+          <li>Coach certification: 200 coaches certified</li>
+          <li>AI analysis: public launch, 500 athlete subscribers</li>
+          <li>First CoachKhoj Discovery Cup — 5 cities</li>
+          <li>Tender portal beta: 50 subscribed coaches</li>
+          <li>Booking app: 2,000 sessions/month</li>
+        </ul>
+      </div>
+      <div class="ph">
+        <div class="ph-label">Phase 3 · Month 12–24</div>
+        <h3>SCALE: SERIES A + 10 CITIES</h3>
+        <ul>
+          <li>₹1Cr ARR triggers Series A (₹5–10Cr)</li>
+          <li>100+ SaaS academies · 1,000 certified coaches</li>
+          <li>First government licensing deal — 1 state</li>
+          <li>5,000 athlete AI analysis subscribers</li>
+          <li>APL franchise model: city partner slots sold</li>
+        </ul>
+      </div>
+      <div class="ph">
+        <div class="ph-label">Phase 4 · Month 24–48</div>
+        <h3>NATIONAL OS: SAI PARTNER + SERIES B</h3>
+        <ul>
+          <li>25+ cities · 5,000+ certified coaches</li>
+          <li>300+ SaaS academies · Tender portal in 5 states</li>
+          <li>SAI's preferred coach discovery platform</li>
+          <li>International expansion: UAE, SE Asia</li>
+          <li>Series B or strategic acquisition pathway</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="sec-ey" style="margin-bottom:14px">18-month milestone tracker</div>
+    <div class="milestone-table">
+      <div class="mt-head"><div>Milestone</div><div>Target</div><div>Where we are</div></div>
+      <div class="mt-row"><div>Mobile app launched</div><div style="color:var(--mid)">Month 4</div><div style="color:#1a5fb4">Planned</div></div>
+      <div class="mt-row"><div>Academy SaaS paying customers</div><div style="color:var(--mid)">30 by Month 12</div><div style="color:#1a5fb4">10 in pipeline</div></div>
+      <div class="mt-row"><div>Khelo India empanelment</div><div style="color:var(--mid)">Month 3</div><div style="color:#2d6a2d">In progress</div></div>
+      <div class="mt-row"><div>Coach certifications issued</div><div style="color:var(--mid)">200 by Month 9</div><div style="color:#2d6a2d">30 done</div></div>
+      <div class="mt-row"><div>AI analysis public launch</div><div style="color:var(--mid)">Month 5</div><div style="color:#1a5fb4">MVP in build</div></div>
+      <div class="mt-row" style="border-bottom:none"><div style="font-weight:500">Revenue ARR</div><div style="color:var(--red);font-weight:500">₹1Cr by Month 18</div><div style="color:#2d6a2d">Base revenue exists</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5 · FINANCIALS -->
+<div class="slide" id="s5">
+  <div class="sec" style="background:var(--white)">
+    <div class="section-logo">
+      <img id="secLogo5" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj">
+      <span>COACHKHOJ</span>
+    </div>
+    <div class="sec-ey">Financial projections</div>
+    <h2>7 STREAMS BUILDING TO<br><span>₹5–10 CRORE ARR BY YEAR 3</span></h2>
+    <p class="sec-lead">Conservative projections anchored in real pipeline — 13 academies already in B2B relationship, 30 coaches certified, 4 events already delivered. These are extrapolations from what we already do.</p>
+    <div class="g3">
+      <div class="card">
+        <div class="year-col"><h4>YEAR 1 <span>Post-funding</span></h4></div>
+        <div class="fin-row"><span class="fin-lbl">Academy SaaS</span><span class="fin-val">₹20–30L</span></div>
+        <div class="fin-row"><span class="fin-lbl">AI player analysis</span><span class="fin-val">₹5–10L</span></div>
+        <div class="fin-row"><span class="fin-lbl">Certification</span><span class="fin-val">₹10–15L</span></div>
+        <div class="fin-row"><span class="fin-lbl">Events IP</span><span class="fin-val">₹15–25L</span></div>
+        <div class="fin-row"><span class="fin-lbl">Tender portal</span><span class="fin-val">₹5–10L</span></div>
+        <div class="fin-row"><span class="fin-lbl">Bookings + CSR</span><span class="fin-val">₹13–22L</span></div>
+        <hr class="divider" style="margin:12px 0">
+        <div class="fin-row"><span style="font-weight:500">Total revenue</span><span class="fin-val y">₹68L–₹1.12Cr</span></div>
+        <div class="fin-row"><span class="fin-lbl">Gross margin</span><span class="fin-val">65–72%</span></div>
+      </div>
+      <div class="card">
+        <div class="year-col"><h4>YEAR 2 <span>Scale</span></h4></div>
+        <div class="fin-row"><span class="fin-lbl">Academy SaaS</span><span class="fin-val">₹60–80L</span></div>
+        <div class="fin-row"><span class="fin-lbl">AI player analysis</span><span class="fin-val">₹25–40L</span></div>
+        <div class="fin-row"><span class="fin-lbl">Certification</span><span class="fin-val">₹40–60L</span></div>
+        <div class="fin-row"><span class="fin-lbl">Events IP</span><span class="fin-val">₹40–60L</span></div>
+        <div class="fin-row"><span class="fin-lbl">Tender portal</span><span class="fin-val">₹20–40L</span></div>
+        <div class="fin-row"><span class="fin-lbl">Bookings + CSR</span><span class="fin-val">₹40–65L</span></div>
+        <hr class="divider" style="margin:12px 0">
+        <div class="fin-row"><span style="font-weight:500">Total revenue</span><span class="fin-val y">₹2.25–3.45Cr</span></div>
+        <div class="fin-row"><span class="fin-lbl">Net profit</span><span class="fin-val g">₹75L–₹1.45Cr</span></div>
+      </div>
+      <div class="card">
+        <div class="year-col"><h4>YEAR 3 <span>National</span></h4></div>
+        <div class="fin-row"><span class="fin-lbl">Academy SaaS</span><span class="fin-val">₹1.5–2Cr</span></div>
+        <div class="fin-row"><span class="fin-lbl">AI player analysis</span><span class="fin-val">₹75L–₹1.5Cr</span></div>
+        <div class="fin-row"><span class="fin-lbl">Certification</span><span class="fin-val">₹80L–₹1.2Cr</span></div>
+        <div class="fin-row"><span class="fin-lbl">Events IP</span><span class="fin-val">₹80L–₹1.5Cr</span></div>
+        <div class="fin-row"><span class="fin-lbl">Tender portal</span><span class="fin-val">₹1–3Cr</span></div>
+        <div class="fin-row"><span class="fin-lbl">Bookings + CSR</span><span class="fin-val">₹90L–₹1.6Cr</span></div>
+        <hr class="divider" style="margin:12px 0">
+        <div class="fin-row"><span style="font-weight:500">Total revenue</span><span class="fin-val y">₹5.25–10.8Cr</span></div>
+        <div class="fin-row"><span class="fin-lbl">Net profit</span><span class="fin-val g">₹2.75–6.8Cr</span></div>
+      </div>
+    </div>
+    <div class="highlight" style="margin-top:24px">
+      <p><strong>Break-even expected between Month 10–14.</strong> SaaS and certification carry 80%+ gross margins at scale. The ₹1Cr ARR milestone at Month 18 triggers the Series A conversation at an estimated ₹8–12Cr valuation — a 6–8x return for this round's investors.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6 · ASK -->
+<div class="slide" id="s6">
+  <div class="sec" style="background:var(--white)">
+    <div class="section-logo">
+      <img id="secLogo6" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj">
+      <span>COACHKHOJ</span>
+    </div>
+    <div class="sec-ey">The ask</div>
+    <h2>₹75 LAKH TO ₹1.5 CRORE TO BUILD<br><span>INDIA'S SPORTS COACHING OS</span></h2>
+
+    <div class="ask-hero">
+      <h3>₹75L – ₹1.5Cr</h3>
+      <p>Seed angel round · SAFE note or equity · 10–15% dilution · Ticket size ₹10L–₹50L per investor</p>
+      <div class="use-row"><span class="use-lbl">Technology — SaaS + App + AI MVP</span><div class="use-track"><div class="use-fill" style="width:38%"></div></div><span class="use-pct">38%</span></div>
+      <div class="use-row"><span class="use-lbl">3 key hires — Tech, Growth, Academy BD</span><div class="use-track"><div class="use-fill" style="width:28%"></div></div><span class="use-pct">28%</span></div>
+      <div class="use-row"><span class="use-lbl">City expansion + events</span><div class="use-track"><div class="use-fill" style="width:18%"></div></div><span class="use-pct">18%</span></div>
+      <div class="use-row"><span class="use-lbl">Marketing + coach acquisition</span><div class="use-track"><div class="use-fill" style="width:10%"></div></div><span class="use-pct">10%</span></div>
+      <div class="use-row"><span class="use-lbl">Legal + compliance + working capital</span><div class="use-track"><div class="use-fill" style="width:6%"></div></div><span class="use-pct">6%</span></div>
+    </div>
+
+    <div class="why-grid" style="margin-bottom:24px">
+      <div class="why-card">
+        <div class="why-n">Why now</div>
+        <div class="why-t">GOVERNMENT IS SPENDING</div>
+        <p class="why-p">Budget 2026-27 names coach development as a Mission pillar for the first time. ₹4,480 crore budget. This window will not stay open.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-n">Why us</div>
+        <div class="why-t">THE NETWORK TOOK 8 YEARS</div>
+        <p class="why-p">500 coaches, 50 academies, 6 institutional partnerships. Capital alone cannot replicate this. No competitor holds equivalent depth.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-n">Why this round</div>
+        <div class="why-t">PRODUCT ON PROVEN NETWORK</div>
+        <p class="why-p">We are not asking you to fund a hypothesis. We are asking you to fund the software layer on top of 8 years of real relationships and revenue.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-n">Your return</div>
+        <div class="why-t">SERIES A IN 18 MONTHS</div>
+        <p class="why-p">₹1Cr ARR by Month 18 triggers Series A at ₹8–12Cr valuation. This is a 6–8x entry multiple at Series A alone.</p>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-ey y">What you get as an investor</div>
+        <ul>
+          <li>Equity in India's only platform combining B2C + B2B + B2G sports coaching access</li>
+          <li>8-year network moat — not replicable with capital alone</li>
+          <li>First-mover in the B2G sports tender channel — no competitor has built this</li>
+          <li>Follow-on opportunity at Series A within 18 months</li>
+          <li>Quarterly updates — full financial and operational transparency</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-ey b">The team</div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--yellowl);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:14px;color:var(--red);flex-shrink:0">SP</div>
+          <div><p style="font-weight:500;font-size:14px;margin-bottom:2px">Siddharth Patil</p><p style="font-size:12px;color:var(--soft)">Founder & CEO · Kridati Sports Management Pvt. Ltd.</p></div>
+        </div>
+        <ul>
+          <li>8+ years building India's grassroots sports ecosystem</li>
+          <li>Designed academy model generating ₹14L APA for Unido FC</li>
+          <li>Official partner — India Khelo Football Thane Qualifiers</li>
+          <li>Relationships: SAI, DY Patil, Special Olympics Bharat, FITB, Smile Foundation</li>
+          <li>Hiring with this round: Tech Lead · Growth Manager · Academy BD</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contact-strip">
+      <div><div class="c-lbl">Founder</div><div class="c-val">Siddharth Patil</div></div>
+      <div><div class="c-lbl">Phone / WhatsApp</div><div class="c-val">+91 88794 66939</div></div>
+      <div><div class="c-lbl">Email</div><div class="c-val">siddharth.patil@coachkhoj.com</div></div>
+      <div><div class="c-lbl">Platform</div><div class="c-val">coachkhoj.com</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img id="footerLogo" src="https://i.imgur.com/placeholder.png" alt="CoachKhoj">
+    <span>COACHKHOJ</span>
+  </div>
+  <div class="ft-right">Kridati Sports Management Pvt. Ltd. · April 2026 · Confidential — For Investor Review Only</div>
+</footer>
+
+<script>
+function go(i){
+  document.querySelectorAll('.slide').forEach((s,j)=>s.classList.toggle('on',j===i));
+  document.querySelectorAll('.nt').forEach((p,j)=>p.classList.toggle('on',j===i));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const LOGO_SRC = 'logo.png';
+['navLogo','coverLogo','secLogo1','secLogo2','secLogo3','secLogo4','secLogo5','secLogo6','footerLogo'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.src = LOGO_SRC;
+});
+</script>
+</body>
+</html>
